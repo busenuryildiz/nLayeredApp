@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Messages;
 using Core.Business.Rules;
+using Core.CrossCuttingConcerns.Exceptions.Types;
 using DataAccess.Abstracts;
 
 namespace Business.Rules
@@ -23,7 +25,7 @@ namespace Business.Rules
 
             if (result.Count>=10)
             {
-                throw new Exception("Kategori sayısı max 10 olabilir");
+                throw new BusinessException(BusinessMessages.CategoryLimit);
             }
         }
     }

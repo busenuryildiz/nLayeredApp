@@ -1,6 +1,7 @@
 using AutoMapper;
 using Business;
 using Business.Dtos.Profiles;
+using Core.CrossCuttingConcerns.Exceptions.Extensions;
 using DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.ConfigureCustomExceptionMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();
