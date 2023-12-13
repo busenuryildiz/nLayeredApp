@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.Abstracts;
 using Business.Concretes;
+using Business.Rules;
 
 namespace Business
 {
@@ -22,6 +23,7 @@ namespace Business
         {
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<CategoryBusinessRules>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }

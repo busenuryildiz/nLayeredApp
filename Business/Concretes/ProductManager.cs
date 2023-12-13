@@ -12,6 +12,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -34,11 +35,15 @@ namespace Business.Concretes
             return createdProductResponse;
         }
 
-        public async Task<IPaginate<GetListProductResponse>> GetListAsync()
+        public async Task<IPaginate<GetListProductResponse>> GetListAsync(PageRequest pageRequest)
         {
-            var productList = await _productDal.GetListAsync();
-            var mappedList = _mapper.Map<Paginate<GetListProductResponse>>(productList);
-            return mappedList;
+            var data = await _productDal.GetListAsync(
+                include: p => p.Include(p => p.Category),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+                );
+            var result = _mapper.Map<Paginate<GetListProductResponse>>(data);
+            return result;
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Business.Dtos.Profiles
         {
             CreateMap<CreateCategoryRequest, Category>().ReverseMap();
             CreateMap<Category, CreatedCategoryResponse>().ReverseMap();
+
             CreateMap<Category, GetListCategoryResponse>().ReverseMap();
             CreateMap<Paginate<Category>, Paginate<GetListCategoryResponse>>().ReverseMap();
         }

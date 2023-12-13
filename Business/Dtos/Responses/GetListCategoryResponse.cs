@@ -13,7 +13,7 @@ public class GetListCategoryResponse : BasePageableModel
 }
 public class CategoryListDto
 {
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string CategoryName { get; set; }
+    public string? Description { get; set; }
 }
 
