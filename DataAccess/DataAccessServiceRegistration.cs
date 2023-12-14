@@ -22,6 +22,7 @@ namespace DataAccess
             //services.AddDbContext<BaseDbContext>(options => options.UseSq lServer(configuration.GetConnectionString("RentACar")));
             services.AddScoped<IProductDal, EfProductDal>();
             services.AddScoped<ICategoryDal, EfCategoryDal>();
+            services.AddScoped<ICustomerDal, EfCustomerDal>();
             return services;
         }
     }

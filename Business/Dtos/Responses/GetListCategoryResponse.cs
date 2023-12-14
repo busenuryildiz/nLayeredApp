@@ -9,11 +9,7 @@ using System.Threading.Tasks;
 namespace Business.Dtos.Responses;
 public class GetListCategoryResponse : BasePageableModel
 {
-    public IList<CategoryListDto> Items { get; set; }
-}
-public class CategoryListDto
-{
-    public string CategoryName { get; set; }
+    public string Name { get; set; }
     public string? Description { get; set; }
 }
 

@@ -29,9 +29,11 @@ namespace Business.Concretes
 
         public async Task<IPaginate<GetListCategoryResponse>> GetListAsync(PageRequest pageRequest)
         {
-            var categoryList = await _categoryDal.GetListAsync();
-            var mappedList = _mapper.Map<Paginate<GetListCategoryResponse>>(categoryList);
-            return mappedList;
+            var data = await _categoryDal.GetListAsync(
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize);
+            var result = _mapper.Map<Paginate<GetListCategoryResponse>>(data);
+            return result;
         }
 
         public async Task<CreatedCategoryResponse> Add(CreateCategoryRequest createCategoryRequest)
